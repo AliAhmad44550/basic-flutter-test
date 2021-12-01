@@ -7,7 +7,7 @@ name: Build and Release Apps
 jobs:
   build:
     name: Build Apps
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Export Release Timestamp
         run: echo "APP_VERSION=v$(date +'%Y.%m.%d.%H.%M.%S')" >> $GITHUB_ENV
@@ -37,15 +37,15 @@ jobs:
         run: flutter test
       - name: Build Android App
         run:  flutter build apk --no-sound-null-safety -v
-      #- name: Build iOS App
-          #  run: |
-          #flutter build ios --no-codesign
-          #cd build/ios/iphoneos
-          #mkdir Payload
-          #cd Payload
-          #ln -s ../Runner.app
-          #cd ..
-        #zip -r app.ipa Payload
+      - name: Build iOS App
+        run: |
+          flutter build ios --no-codesign
+          cd build/ios/iphoneos
+          mkdir Payload
+          cd Payload
+          ln -s ../Runner.app
+          cd ..
+          zip -r app.ipa Payload
       - name: Build Web App
         run: |
           flutter build web
