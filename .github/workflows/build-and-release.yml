@@ -29,7 +29,7 @@ jobs:
       - name: Run Tests
         run: flutter test
       - name: Build Android App
-        run: flutter build apk --release --no-sound-null-safety
+        run:  flutter build apk --debug --split-per-abi --no-sound-null-safety
       - name: Build iOS App
         run: |
           flutter build ios --no-codesign
