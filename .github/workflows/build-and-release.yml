@@ -23,7 +23,6 @@ jobs:
         with:
           flutter-version : '2.5.3'
           channel: 'stable'
-      - name: Enable configuration for web.
       - run: flutter  config --enable-web
       - name: Install pub Dependencies
         run: flutter pub get
