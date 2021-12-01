@@ -18,6 +18,13 @@ jobs:
         with:
           java-version: '12.x'
           distribution: 'zulu'
+      - name: specify NDK
+        uses: ravinderjangra/android-ndk-toolchain-setup@0.2
+        with:
+          api: '21'
+          arch: 'x86'
+          install-location: 'toolchains'
+          force: true
       - name: Set up Flutter
         uses: subosito/flutter-action@v1
         with:
@@ -28,8 +35,8 @@ jobs:
         run: flutter pub get
       - name: Run Tests
         run: flutter test
-      - name: Build Android App
-        run:  flutter build apk --no-sound-null-safety -v
+      #- name: Build Android App
+       # run:  flutter build apk --no-sound-null-safety -v
       - name: Build iOS App
         run: |
           flutter build ios --no-codesign
