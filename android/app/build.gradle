@@ -20,11 +20,7 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
-android {
-    packagingOptions {
-        exclude 'AndroidManifest.xml'
-    }
-}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
@@ -39,7 +35,9 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
-
+    packagingOptions {
+        exclude 'AndroidManifest.xml'
+    }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.flutter_github_action"
