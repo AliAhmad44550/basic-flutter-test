@@ -18,13 +18,6 @@ jobs:
         with:
           java-version: '12.x'
           distribution: 'zulu'
-      - name: specify NDK
-        uses: ravinderjangra/android-ndk-toolchain-setup@0.2
-        with:
-          api: '21'
-          arch: 'x86'
-          install-location: 'toolchains'
-          force: true
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
